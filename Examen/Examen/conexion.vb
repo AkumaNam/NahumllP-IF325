@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.Windows.Forms
 Public Class conexion
-    Public conexion As SqlConnection = New SqlConnection("Data Source= LAPTOP-L0NU1VSF\MSSQLSERVER; Initial Catalog=master; Integrated Security=True")
+    Public conexion As SqlConnection = New SqlConnection("Data Source= LAPTOP-L0NU1VSF\; Initial Catalog=master ; Integrated Security=True")
     Private cmb As SqlCommandBuilder
     Public ds As DataSet = New DataSet()
     Public da As SqlDataAdapter
@@ -109,16 +109,20 @@ Public Class conexion
 
     Public Sub llenarcbCliente()
         conexion.Open()
-        adap = New SqlDataAdapter("select * from factura.cliente", conexion)
+        adap = New SqlDataAdapter("Select * from factura.cliente ", conexion)
+        datos2 = New DataSet
         datos2.Tables.Add("factura.cliente")
-        adap.Fill(datos2.Tables("nombre" + "apellido"))
+        adap.Fill(datos2.Tables("factura.cliente"))
+        conexion.Close()
 
     End Sub
-    Public Sub llenarcb()
+    Public Sub llenarcbproducto()
         conexion.Open()
-        adap = New SqlDataAdapter("select * from factura.producto", conexion)
+        adap = New SqlDataAdapter("Select * from factura.producto ", conexion)
+        datos2 = New DataSet
         datos2.Tables.Add("factura.producto")
-        adap.Fill(datos2.Tables("nombreProducto"))
+        adap.Fill(datos2.Tables("factura.producto"))
+        conexion.Close()
 
     End Sub
 End Class

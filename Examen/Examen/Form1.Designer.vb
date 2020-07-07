@@ -26,12 +26,11 @@ Partial Class Form1
         Me.BtnAgregar = New System.Windows.Forms.Button()
         Me.btnmod = New System.Windows.Forms.Button()
         Me.btnelim = New System.Windows.Forms.Button()
-        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.dtg = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.ErrorProvid = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.ErrorValid = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.mtxtID = New System.Windows.Forms.MaskedTextBox()
         Me.txtPrecio = New System.Windows.Forms.TextBox()
         Me.txtcantidad = New System.Windows.Forms.TextBox()
@@ -41,7 +40,7 @@ Partial Class Form1
         CType(Me.dtg, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.ErrorProvid, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ErrorValid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnAgregar
@@ -70,15 +69,6 @@ Partial Class Form1
         Me.btnelim.TabIndex = 2
         Me.btnelim.Text = "Eliminar"
         Me.btnelim.UseVisualStyleBackColor = True
-        '
-        'btnBuscar
-        '
-        Me.btnBuscar.Location = New System.Drawing.Point(696, 314)
-        Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
-        Me.btnBuscar.TabIndex = 3
-        Me.btnBuscar.Text = "Buscar"
-        Me.btnBuscar.UseVisualStyleBackColor = True
         '
         'dtg
         '
@@ -113,9 +103,9 @@ Partial Class Form1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Información de Ventas"
         '
-        'ErrorProvid
+        'ErrorValid
         '
-        Me.ErrorProvid.ContainerControl = Me
+        Me.ErrorValid.ContainerControl = Me
         '
         'mtxtID
         '
@@ -172,7 +162,6 @@ Partial Class Form1
         Me.ClientSize = New System.Drawing.Size(803, 372)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.btnelim)
         Me.Controls.Add(Me.btnmod)
         Me.Controls.Add(Me.BtnAgregar)
@@ -182,7 +171,7 @@ Partial Class Form1
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.ErrorProvid, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ErrorValid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -190,7 +179,6 @@ Partial Class Form1
     Friend WithEvents BtnAgregar As Button
     Friend WithEvents btnmod As Button
     Friend WithEvents btnelim As Button
-    Friend WithEvents btnBuscar As Button
     Friend WithEvents dtg As DataGridView
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
@@ -200,6 +188,6 @@ Partial Class Form1
     Friend WithEvents txtPrecio As TextBox
     Friend WithEvents mtxtID As MaskedTextBox
     Friend WithEvents ToolTip1 As ToolTip
-    Friend WithEvents ErrorProvid As ErrorProvider
+    Friend WithEvents ErrorValid As ErrorProvider
     Friend WithEvents mtxtFechaVenta As MaskedTextBox
 End Class
