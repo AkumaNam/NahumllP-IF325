@@ -10,23 +10,21 @@ Public Class Form1
     End Sub
 
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
-        Try
-            If Me.ValidateChildren And txtcantidad.Text <> String.Empty And IsNumeric(txtcantidad.Text) = True And mtxtID.Text <> String.Empty And txtPrecio.Text <> String.Empty Then
-                Dim agregar As String = "insert into  values('" + mtxtID.Text + "','" + mtxtFechaVenta.Text + "','" + txtPrecio.Text + "','" + txtcantidad.Text + "','" + cbCliente.Text + "','" + cbProducto.Text + "')"
-                If (conexion.insert(agregar, mtxtID.Text)) Then
-                    MessageBox.Show("Datos agregados exitosamente")
-                    llenar()
-
-
-                Else
-                    MessageBox.Show("Ya existe una venta con el numero   " + mtxtID.Text + "")
+        'Try
+        'If Me.ValidateChildren And txtcantidad.Text <> String.Empty And IsNumeric(txtcantidad.Text) = True And IsNumeric(txtPrecio.Text) = True And mtxtID.Text <> String.Empty And txtPrecio.Text <> String.Empty Then
+        Dim agregar As String = "insert into factura.Venta values('" + mtxtID.Text + "','" + mtxtFechaVenta.Text + "','" + txtPrecio.Text + "','" + txtcantidad.Text + "','" + cbCliente.SelectedIndex + "','" + cbProducto.SelectedIndex + "')"
+        If (conexion.insert(agregar, mtxtID.Text)) Then
+            MessageBox.Show("Datos agregados exitosamente")
+            llenar()
+        Else
+            MessageBox.Show("Ya existe una venta con el numero   " + mtxtID.Text + "")
                 End If
-            Else
-                MessageBox.Show("Revise los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        ' Else
+        'MessageBox.Show("Revise los datos ingresados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End If
+        'Catch ex As Exception
+        'MsgBox(ex.Message)
+        'End Try
 
     End Sub
 
@@ -48,10 +46,6 @@ Public Class Form1
         Else
             MessageBox.Show("Error al eliminar datos")
         End If
-    End Sub
-
-    Private Sub btnBuscar_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Private Sub dtg_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtg.CellContentClick
@@ -141,22 +135,6 @@ Public Class Form1
 
     Private Sub txtcantidad_Validating(sender As Object, e As CancelEventArgs) Handles txtcantidad.Validating
         If DirectCast(sender, TextBox).Text.Length > 0 Then
-            Me.ErrorValid.SetError(sender, "")
-        Else
-            Me.ErrorValid.SetError(sender, "Es un campo obligatorio")
-        End If
-    End Sub
-
-    Private Sub cbCliente_Validating(sender As Object, e As CancelEventArgs) Handles cbCliente.Validating
-        If DirectCast(sender, ComboBox).Text.Length > 0 Then
-            Me.ErrorValid.SetError(sender, "")
-        Else
-            Me.ErrorValid.SetError(sender, "Es un campo obligatorio")
-        End If
-    End Sub
-
-    Private Sub cbProducto_Validating(sender As Object, e As CancelEventArgs) Handles cbProducto.Validating
-        If DirectCast(sender, ComboBox).Text.Length > 0 Then
             Me.ErrorValid.SetError(sender, "")
         Else
             Me.ErrorValid.SetError(sender, "Es un campo obligatorio")
