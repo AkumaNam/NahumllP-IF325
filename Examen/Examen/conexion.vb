@@ -37,7 +37,55 @@ Public Class conexion
         Dim reader As SqlDataReader
         Dim cont As Int32 = 0
         conexion.Open()
-        comand = New SqlCommand("SELECT * FROM factura.Venta", conexion)
+        comand = New SqlCommand("SELECT * FROM factura.Venta where idVenta='" + ID + "'", conexion)
+        reader = comand.ExecuteReader()
+        While reader.Read
+            cont = cont + 1
+        End While
+        reader.Close()
+        If cont = 0 Then
+            comando = New SqlCommand(sql, conexion)
+            Dim i As Integer = comando.ExecuteNonQuery()
+            conexion.Close()
+            If (i > 0) Then
+                Return True
+
+            End If
+        Else
+            conexion.Close()
+            Return False
+        End If
+    End Function
+
+    Function insert1(ByVal sql, ByVal ID)
+        Dim reader As SqlDataReader
+        Dim cont As Int32 = 0
+        conexion.Open()
+        comand = New SqlCommand("SELECT * FROM factura.producto where idProducto='" + ID + "'", conexion)
+        reader = comand.ExecuteReader()
+        While reader.Read
+            cont = cont + 1
+        End While
+        reader.Close()
+        If cont = 0 Then
+            comando = New SqlCommand(sql, conexion)
+            Dim i As Integer = comando.ExecuteNonQuery()
+            conexion.Close()
+            If (i > 0) Then
+                Return True
+
+            End If
+        Else
+            conexion.Close()
+            Return False
+        End If
+    End Function
+
+    Function insert2(ByVal sql, ByVal ID)
+        Dim reader As SqlDataReader
+        Dim cont As Int32 = 0
+        conexion.Open()
+        comand = New SqlCommand("SELECT * FROM factura.cliente where idCliente='" + ID + "'", conexion)
         reader = comand.ExecuteReader()
         While reader.Read
             cont = cont + 1
